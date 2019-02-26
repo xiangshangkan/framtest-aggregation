@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="xDiamondConfig"
+          class="io.github.xdiamond.client.spring.XDiamondConfigFactoryBean">
+        <property name="serverHost" value="${xdiamond.project.ip:172.16.4.119}" />
+        <property name="serverPort" value="${xdiamond.server.port:5678}" />
+        <property name="groupId" value="com.jjshome.cloudoa" />
+        <property name="artifactId" value="nhr" />
+        <property name="version" value="1.0.0-SNAPSHOT" />
+        <property name="profile" value="${spring.profiles.active:localtest}" />
+        <property name="secretKey" value="${xdiamond.project.secretkey:}"></property>
+        <property name="bPrintConfigWhenBoot" value="${xdiamond.print.config:true}"></property>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="propertiesArray">
+            <util:list>
+                <bean class="java.util.Properties" factory-bean="xDiamondConfig"
+                      factory-method="getProperties">
+                </bean>
+            </util:list>
+        </property>
+    </bean>
+
+</beans>

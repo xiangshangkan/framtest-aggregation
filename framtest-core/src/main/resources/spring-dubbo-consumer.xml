@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 详细配置见 http://dubbo.io/User+Guide-zh.htm#UserGuide-zh-%3Cdubbo%3Aapplication%2F%3E -->
+    <!-- 应用信息配置 -->
+    <dubbo:application id="dubboApplication" name="nhr"  organization="jjs"/>
+    <!-- 注册注册中心 -->
+    <dubbo:registry id="dubboRegistry" protocol="zookeeper" address="${zookeeper.address}" check="false"/>
+
+    <dubbo:protocol name="dubbo" serialization="hessian2" accesslog="dubbo.accesslog" port="34889" />
+    <!--###############################服务消费者引用服务配置###############################-->
+
+    <!-- 开铺机构信息查询 -->
+    <!--<dubbo:reference id="iInstitutionService" interface="com.jjshome.kp.api.service.institution.IInstitutionService" timeout="6000" check="false" retries="0"/>-->
+</beans>

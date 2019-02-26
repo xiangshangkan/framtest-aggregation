@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="framtest-main:war">
+    <output-path>$PROJECT_DIR$/framtest-main/target</output-path>
+    <root id="archive" name="framtest-main.war">
+      <element id="artifact" artifact-name="framtest-main:war exploded" />
+    </root>
+  </artifact>
+</component>

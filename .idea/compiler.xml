@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="framtest-client" />
+        <module name="framtest-common" />
+        <module name="framtest-core" />
+        <module name="framtest-front" />
+        <module name="framtest-main" />
+        <module name="framtest-timer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="framtest-aggregation" target="1.7" />
+      <module name="framtest-client" target="1.7" />
+      <module name="framtest-common" target="1.7" />
+      <module name="framtest-core" target="1.7" />
+      <module name="framtest-front" target="1.7" />
+      <module name="framtest-main" target="1.7" />
+      <module name="framtest-timer" target="1.7" />
+      <module name="front-main" target="1.7" />
+      <module name="front-timer" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

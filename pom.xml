@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 项目的坐标信息 (反写的公司网址+项目名) -->
+    <groupId>com.jinkme</groupId>
+    <!-- 建议(项目名+模块名） -->
+    <artifactId>framtest-aggregation</artifactId>
+    <!-- maven项目打包方式：默认：jar,可指定war,zip、pom 当是组合maven项目中的父项目时必须指定pom -->
+    <packaging>pom</packaging>
+    <!-- 大版本号.分支版本号.小版本号.-->
+    <!--版本类型划分:SNAPSHOT（快照），ALPHA（内侧），BETA（公测），RELEASE（稳定），GA（正式）-->
+    <version>1.0-SNAPSHOT</version>
+
+
+    <!--项目描述-->
+    <description>聚合项目测试-zh</description>
+    <!--开发人员信息-->
+    <developers></developers>
+    <!--许可证信息-->
+    <licenses></licenses>
+    <!--组织信息-->
+    <organization></organization>
+
+
+    <!-- 子模块 -->
+    <modules>
+        <module>framtest-common</module>
+        <module>framtest-core</module>
+        <module>framtest-client</module>
+        <module>framtest-front</module>
+        <module>framtest-timer</module>
+        <module>framtest-main</module>
+    </modules>
+
+    <!-- 可定义包的版本变量 -->
+    <properties>
+        <!-- 编译参数 -->
+        <jdk.version>1.7</jdk.version>
+        <encoding>UTF-8</encoding>
+        <plugin.compiler.version>3.1</plugin.compiler.version>
+        <plugin.resources.version>2.6</plugin.resources.version>
+        <plugin.release.version>2.5</plugin.release.version>
+        <plugin.surefire.version>2.4.2</plugin.surefire.version>
+        <plugin.source.version>2.2.1</plugin.source.version>
+        <svnjava.version>2.1.0</svnjava.version>
+
+        <!-- jar包版本 -->
+        <junit.version>4.12</junit.version>
+        <fastjson.version>1.2.6</fastjson.version>
+        <commons.lang.version>3.4</commons.lang.version>
+        <commons.collections.version>3.2.1</commons.collections.version>
+        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <xdiamond-client.version>1.0.4</xdiamond-client.version>
+        <servlet.version>2.4</servlet.version>
+    </properties>
+
+    <!-- 依赖列表 -->
+    <dependencies>
+        <!-- 单元测试 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <!-- 依赖范围 ：定义项目哪个生命周期中需要被依赖-->
+            <!--compile(默认，编译、测试、运行时被需要) provided(编译和测试需要) runtime(运行和测试时被需要)   -->
+            <!-- test(编译测试和编译运行时被需要)  system -->
+            <scope>test</scope>
+            <!-- 设置依赖是否可选：true/false默认是后者 -->
+             <!--<optional>false</optional> -->
+             <!--排除依赖传递列表, 排除部分不需要的依赖-->
+             <!-- <exclusions>
+               <exclusion></exclusion>
+             </exclusions> -->
+        </dependency>
+
+        <!-- 工具类 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${commons.collections.version}</version>
+        </dependency>
+        <!-- log -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+
+        <!-- fastjson start -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <!-- 配置中心 -->
+        <dependency>
+            <groupId>io.github.hengyunabc.xdiamond</groupId>
+            <artifactId>xdiamond-client</artifactId>
+            <version>${xdiamond-client.version}</version>
+        </dependency>
+
+        <!-- jsp -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- 支持1.8的dubbo序列化 -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.20.0-GA</version>
+        </dependency>
+        <!-- 支持1.8的dubbo序列化 -->
+    </dependencies>
+
+    <!-- 插件管理 -->
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.compiler.version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${plugin.surefire.version}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${plugin.resources.version}</version>
+                <configuration>
+                    <encoding>${encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${plugin.source.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${plugin.release.version}</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <arguments>-DskipTests</arguments>
+                    <providerImplementations>
+                        <svn>javasvn</svn>
+                    </providerImplementations>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.code.maven-scm-provider-svnjava</groupId>
+                        <artifactId>maven-scm-provider-svnjava</artifactId>
+                        <version>${svnjava.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <!-- nexus部署 -->
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://172.16.7.251:8081/nexus/content/repositories/jjsrespo</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://172.16.7.251:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

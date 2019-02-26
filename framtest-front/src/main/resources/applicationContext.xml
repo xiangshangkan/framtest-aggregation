@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 导入配置中心 -->
+    <import resource="classpath:/xdiamond-config.xml" />
+
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="useCodeAsDefaultMessage" value="true"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="basenames">
+            <list>
+                <value>i18n/error</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 开启spring注解 Autowired、Resource、PostConstruct等的使用 -->
+    <context:annotation-config />
+    <!-- 设置事务的annotation生效 -->
+    <tx:annotation-driven/>
+    <!-- nhr数据源 -->
+    <import resource="classpath:/testData.xml"/>
+    <!-- dubbo -->
+    <import resource="classpath:/spring-dubbo-consumer.xml"/>
+    <!-- springMvc -->
+    <import resource="classpath:/spring-mvc.xml"/>
+    <!--redis-->
+    <import resource="classpath:/spring-redis.xml"/>
+    <!-- 定义spring扫描的包 -->
+    <context:component-scan base-package="com.jinkme.*" />
+</beans>

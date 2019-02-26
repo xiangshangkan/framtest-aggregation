@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds">
+	<property name="HOME" value="logs"></property>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout"></layout>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss} %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${HOME}/nhr.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${HOME}/nhr.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>5</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 记录错误日志 -->
+	<appender name="errorFile"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${HOME}/error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${HOME}/error.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<MaxHistory>10</MaxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="dubboFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${HOME}/dubbo.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${HOME}/dubbo.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>5</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="dubboAccess" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${HOME}/dubbo-access.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${HOME}/dubbo-access.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>5</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.alibaba.dubbo" level="WARN" additivity="true">
+		<appender-ref ref="dubboFile" />
+	</logger>
+
+	<logger name="com.jjshome.cloudoa.nhr.front.handler.GenericExceptionResolver" level="ERROR" additivity="false">
+		<appender-ref ref="errorFile" />
+	</logger>
+
+	<logger name="dubbo.accesslog" level="ERROR" additivity="true">
+		<appender-ref ref="dubboAccess" />
+	</logger>
+
+	<logger name="errorLog" additivity="false">
+		<level value="error"></level>
+		<appender-ref ref="errorFile" />
+	</logger>
+
+	<!-- root -->
+	<root level="warn">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</root>
+</configuration>

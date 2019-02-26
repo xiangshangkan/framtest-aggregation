@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
+
+    <context:component-scan base-package="com.jinkme.framtest.front.*.web" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- spring mvc 拦截器 -->
+
+    <mvc:interceptors>
+        <bean class="com.jinkme.framtest.front.web.interceptor.AuthInterceptor"/>
+    </mvc:interceptors>
+
+
+    <!-- 支持fastJson -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <array>
+                        <value>WriteMapNullValue</value>
+                        <value>WriteNullStringAsEmpty</value>
+                    </array>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 自定义的标签 -->
+    <!--<bean id="powerTag" class="com.jjshome.power.web.tags.PowerTag"></bean>
+    <bean id="powerTag1" class="com.jjshome.cloudoa.nhr.front.utils.tags.PowerTag"></bean>
+    <bean id="selectDict" class="com.jjshome.cloudoa.nhr.front.utils.tags.SelectDict"></bean>
+    &lt;!&ndash; 配置freeMarker的模板路径 &ndash;&gt;
+    <bean id="freemarkerConfig" class="com.jjshome.cloudoa.nhr.front.config.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/view/"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">5</prop>
+                <prop key="url_escaping_charset">UTF-8</prop>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="output_encoding">UTF-8</prop>
+                <prop key="locale">zh_CN</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="time_format">HH:mm:ss</prop>
+                <prop key="number_format">##.##</prop>
+                <prop key="template_exception_handler">ignore</prop>
+                <prop key="classic_compatible">true</prop>
+                <prop key="whitespace_stripping">true</prop>
+            </props>
+        </property>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="staticPath" value="/nhr_resource/" />
+                <entry key="rootPath" value="${rootPath}" />
+                <entry key="nhrContext" value="${nhrContext}" />
+                <entry key="treePurviewUrl" value="${tree_purview_url}" />
+                <entry key="postPurviewUrl" value="${post.purview.url}" />
+                <entry key="getVersion" value-ref="getVersion"/>
+                <entry key="power" value-ref="powerTag"/>
+                <entry key="powerf" value-ref="powerTag1"/>
+                <entry key="selectDict" value-ref="selectDict" />
+
+                <entry key="treeEditAllPurviewUrl" value="${tree_edit_all_purview_url}" />
+                <entry key="treeEditPurviewUrl" value="${tree_edit_purview_url}" />
+                <entry key="qiniuHeadPath" value="${qiniuHeadPath}" />
+                <entry key="qiniuDomain" value="${qiniuPath}" />
+                <entry key="fcwPath" value="${fcwPath}" />
+                <entry key="indexUrl" value="${index.url}" />
+                <entry key="frontUrl" value="${front.url}" />
+
+
+                <entry key="postSeqPurviewUrl" value="${post.seq.purview.url}" />
+                <entry key="tenureExportPur" value="${tenure_export_purview_url}" />
+
+
+            </map>
+        </property>
+    </bean>
+    &lt;!&ndash; 版本管理 &ndash;&gt;
+    <bean id="getVersion" class="com.jjshome.cloudoa.nhr.front.component.GetVersion" />
+    &lt;!&ndash; 适配视图配置 &ndash;&gt;
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="false"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="requestContextAttribute" value="request"/>
+    </bean>-->
+
+    <!-- 文件上传视图 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+    </bean>
+
+    <!-- 安全相关异常处理配置 -->
+   <!-- <bean id="exceptionResolver" class="com.jjshome.cloudoa.nhr.front.handler.CommonExceptionResolver">
+    </bean>-->
+
+    <mvc:view-controller path="/" view-name="forward:/index"/>
+    <!--<mvc:view-controller path="/500" view-name="/500"/>-->
+    <mvc:view-controller path="/404" view-name="/404"/>
+    <mvc:view-controller path="/403" view-name="/403"/>
+
+    <mvc:default-servlet-handler/>
+</beans>

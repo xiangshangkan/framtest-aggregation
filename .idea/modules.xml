@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/framtest-aggregation.iml" filepath="$PROJECT_DIR$/framtest-aggregation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framtest-client/framtest-client.iml" filepath="$PROJECT_DIR$/framtest-client/framtest-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framtest-common/framtest-common.iml" filepath="$PROJECT_DIR$/framtest-common/framtest-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framtest-core/framtest-core.iml" filepath="$PROJECT_DIR$/framtest-core/framtest-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framtest-front/framtest-front.iml" filepath="$PROJECT_DIR$/framtest-front/framtest-front.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framtest-main/framtest-main.iml" filepath="$PROJECT_DIR$/framtest-main/framtest-main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framtest-timer/framtest-timer.iml" filepath="$PROJECT_DIR$/framtest-timer/framtest-timer.iml" />
+    </modules>
+  </component>
+</project>
