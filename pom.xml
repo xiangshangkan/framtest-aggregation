@@ -132,6 +132,7 @@
     <!-- 插件管理 -->
     <build>
         <plugins>
+            <!-- maven 编译插件 -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${plugin.compiler.version}</version>

@@ -1,6 +1,6 @@
 package test;
 
-import com.jinkme.framtest.common.entity.Student;
+import com.jinkme.framtest.common.entity.test.Student;
 
 /**
  * @author : zhouhui

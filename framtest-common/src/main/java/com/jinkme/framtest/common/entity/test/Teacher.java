@@ -1,4 +1,4 @@
-package com.jinkme.framtest.common.entity;
+package com.jinkme.framtest.common.entity.test;
 
 import java.io.Serializable;
 
