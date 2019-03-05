@@ -1,5 +1,9 @@
 package com.jinkme.framtest.front.web.test;
 
+import com.jinkme.framtest.common.entity.test.Student;
+import com.jinkme.framtest.common.entity.test.Teacher;
+import com.jinkme.framtest.core.service.test.TestDemoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,9 +15,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/testDemo")
 public class TestDemoController {
 
-    @RequestMapping("/testDemo")
-    public void testDemo(){
+    @Autowired
+    private TestDemoService testDemoService;
+
+    public static void main(String[] args){
 
     }
+
+    /** 
+     * @description 保存老师信息
+     * @param       
+     * @return      
+     * @author      zhouhui
+     * @date        2019/3/5 16:17
+    */
+    @RequestMapping("/testDemo")
+    public void saveTeacherInfo(Teacher teacher){
+        this.testDemoService.saveTeacher(teacher);
+    }
+
+    /**
+     * @description //保存学生信息
+     * @param
+     * @return
+     * @author      zhouhui
+     * @date        2019/3/5 16:18
+    */
+    public void saveStudentInfo(Student student){
+        this.testDemoService.saveStudent(student);
+    }
+
+
 
 }

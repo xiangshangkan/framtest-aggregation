@@ -8,7 +8,7 @@
         <result column="teacher_number" property="teacherNumber" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <!-- 保存organizational_structure_report -->
+    <!-- 保存student -->
     <insert id="insert" parameterType="com.jinkme.framtest.common.entity.test.Student"  useGeneratedKeys="true"
             keyProperty="id" >
         INSERT INTO student
@@ -24,6 +24,7 @@
         )
     </insert>
 
+    <!-- 更新teacher -->
     <update id="update" parameterType="com.jinkme.framtest.common.entity.test.Student" keyProperty="id" useGeneratedKeys="true">
         UPDATE  student
         <set>
