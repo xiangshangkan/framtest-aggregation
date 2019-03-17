@@ -13,6 +13,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println(" 访问了spring 拦截器");
         return super.preHandle(request, response, handler);
     }
 }

@@ -18,9 +18,10 @@ public class TestDemoController {
     @Autowired
     private TestDemoService testDemoService;
 
-    public static void main(String[] args){
-
-    }
+    @RequestMapping("/test")
+   public void test(){
+       System.out.println("哈哈哈");
+   }
 
     /** 
      * @description 保存老师信息
@@ -29,7 +30,7 @@ public class TestDemoController {
      * @author      zhouhui
      * @date        2019/3/5 16:17
     */
-    @RequestMapping("/testDemo")
+    @RequestMapping("/saveTeacher")
     public void saveTeacherInfo(Teacher teacher){
         this.testDemoService.saveTeacher(teacher);
     }
@@ -41,9 +42,12 @@ public class TestDemoController {
      * @author      zhouhui
      * @date        2019/3/5 16:18
     */
+    @RequestMapping("/saveStudent")
     public void saveStudentInfo(Student student){
         this.testDemoService.saveStudent(student);
     }
+
+
 
 
 

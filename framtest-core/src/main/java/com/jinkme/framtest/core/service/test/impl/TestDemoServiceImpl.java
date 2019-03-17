@@ -24,11 +24,11 @@ public class TestDemoServiceImpl implements TestDemoService {
 
     @Override
     public void saveStudent(Student student) {
-        int id = this.studentDAO.insert(student);
+        int num = this.studentDAO.insert(student);
     }
 
     @Override
     public void saveTeacher(Teacher teacher) {
-       int id = this.teacherDAO.insert(teacher);
+       int num = this.teacherDAO.insert(teacher);
     }
 }

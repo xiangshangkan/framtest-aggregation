@@ -23,18 +23,20 @@
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
         <property name="driverClassName" value="${jdbc.driver}" />
-        <!--<property name="filters" value="slf4j,stat,config" />-->
-       <!-- <property name="connectionProperties" value="${db_props:config.decrypt=false}" />-->
+        <!-- 这里使用的是druid连接池 -->
         <property name="maxActive" value="${druid.maxActive}" />
-        <property name="initialSize" value="1" />
-        <property name="maxWait" value="60000" />
         <property name="minIdle" value="${druid.minIdle}" />
         <property name="timeBetweenEvictionRunsMillis" value="600000" />
         <property name="minEvictableIdleTimeMillis" value="600000" />
         <property name="testWhileIdle" value="true" />
         <property name="testOnBorrow" value="false" />
+       <!-- <property name="initialSize" value="1" />
+        <property name="maxWait" value="60000" />-->
         <property name="testOnReturn" value="false" />
         <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+        <!-- 数据库密码加密 -->
+        <!--<property name="filters" value="stat,config"/>
+        <property name="connectionProperties" value="${db_props:config.decrypt=false}"/>-->
     </bean>
     <!-- spring and mybatis 集成 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -15,10 +15,10 @@
 
     <!-- spring mvc 拦截器 -->
 
-    <mvc:interceptors>
+   <!-- <mvc:interceptors>
         <bean class="com.jinkme.framtest.front.web.interceptor.AuthInterceptor"/>
     </mvc:interceptors>
-
+-->
     <mvc:interceptors>
         <!--可配置多个拦截器,顺执序行 -->
         <mvc:interceptor>
