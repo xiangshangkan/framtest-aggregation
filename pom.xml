@@ -190,7 +190,7 @@
 
 
     <!-- nexus部署 -->
-    <distributionManagement>
+    <!--<distributionManagement>
         <repository>
             <id>releases</id>
             <url>http://172.16.7.251:8081/nexus/content/repositories/jjsrespo</url>
@@ -199,5 +199,5 @@
             <id>snapshots</id>
             <url>http://172.16.7.251:8081/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 </project>
