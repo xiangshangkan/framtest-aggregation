@@ -1,5 +1,7 @@
 package com.jinkme.framtest.common.entity.test;
 
+import com.jinkme.framtest.common.entity.Header;
+
 import java.io.Serializable;
 
 /**
@@ -11,11 +13,12 @@ public class Student implements Serializable {
     private static final long serialVersionUID = -7876259629143961229L;
     /** 主键 */
    private Integer id;
-   /** 学生编号 */
+
+   @Header(chieseName = "学生编号 ")
    private String studentNumber;
-   /** 学生姓名 */
+   @Header(chieseName = "学生姓名 ")
    private String studentName;
-   /** 老师编号*/
+   @Header(chieseName = "老师编号")
    private String teacherNumber;
 
     public Integer getId() {

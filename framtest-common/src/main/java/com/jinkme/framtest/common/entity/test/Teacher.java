@@ -1,5 +1,7 @@
 package com.jinkme.framtest.common.entity.test;
 
+import com.jinkme.framtest.common.entity.Header;
+
 import java.io.Serializable;
 
 /**
@@ -12,9 +14,9 @@ public class Teacher implements Serializable {
 
     /** 主键 */
     private Integer id;
-    /** 老师编号*/
+    @Header(chieseName = "老师编号")
     private String teacherNumber;
-    /** 老师名称*/
+    @Header(chieseName = "老师名称")
     private String teacherName;
 
 
