@@ -51,7 +51,7 @@
         <junit.version>4.12</junit.version>
         <fastjson.version>1.2.6</fastjson.version>
         <commons.lang.version>3.4</commons.lang.version>
-        <commons.collections.version>3.2.1</commons.collections.version>
+        <commons.collections.version>3.2.2</commons.collections.version>
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <xdiamond-client.version>1.0.4</xdiamond-client.version>
         <servlet.version>2.4</servlet.version>
